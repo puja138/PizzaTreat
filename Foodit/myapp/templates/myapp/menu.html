@@ -1,0 +1,77 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- 🧾 Menu Items in Columns -->
+<div class="menu-multicolumn">
+  <!-- Pizza -->
+  <div id="pizza" class="menu-column">
+    <h2>🍕 Pizza</h2>
+    <ol>
+      <li>Margherita</li>
+      <li>Cheese Burst</li>
+      <li>Farmhouse</li>
+      <li>Paneer Tikka</li>
+      <li>Veggie Delight</li>
+    </ol>
+  </div>
+
+  <!-- Burger -->
+  <div id="burger" class="menu-column">
+    <h2>🍔 Burger</h2>
+    <ol>
+      <li>Classic Veg Burger</li>
+      <li>Cheese Burger</li>
+      <li>Paneer Burger</li>
+      <li>Spicy Crunch Burger</li>
+      <li>Maharaja Burger</li>
+    </ol>
+  </div>
+
+  <!-- Drink -->
+  <div id="drink" class="menu-column">
+    <h2>🥤 Drink</h2>
+    <ol>
+      <li>Coca-Cola</li>
+      <li>Pepsi</li>
+      <li>Sprite</li>
+      <li>Fanta</li>
+      <li>Lemon Iced Tea</li>
+    </ol>
+  </div>
+
+  <!-- Dessert -->
+  <div id="dessert" class="menu-column">
+    <h2>🍰 Dessert</h2>
+    <ol>
+      <li>Chocolate Cake</li>
+      <li>Gulab Jamun</li>
+      <li>Brownie with Ice Cream</li>
+      <li>Rasmalai</li>
+      <li>Mango Mousse</li>
+    </ol>
+  </div>
+</div>
+
+<!-- 🧾 Product Cards -->
+<section class="card-section d-flex flex-wrap justify-content-center gap-4 px-4">
+  {% for product in products %}
+  <div class="card shadow-sm" style="width: 18rem;">
+    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+    <div class="card-body text-center">
+      <h5 class="card-title"><strong>{{ product.name }}</strong></h5>
+      <p class="card-text"><strong>₹{{ product.price }}</strong></p>
+
+      <a href="{% url 'order_view' product.id %}" class="btn btn-danger mb-2">Order Now</a>
+
+      <form method="post" action="{% url 'add_to_cart' product.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary w-100">Add to Cart 🛒</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

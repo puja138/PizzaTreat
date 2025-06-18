@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Success</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f9f3;
+      color: #333;
+    }
+
+    .success-container {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 30px;
+      background: #ffffff;
+      border: 2px solid #4CAF50;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .checkmark {
+      font-size: 60px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #2e7d32;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px #c8e6c9;
+    }
+
+    .info {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .info strong {
+      color: #000;
+    }
+
+    .note {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      padding: 12px 20px;
+      background-color: #ff5722;
+      color: #fff;
+      border-radius: 8px;
+      margin: 0 10px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .buttons a:hover {
+      background-color: #e64a19;
+    }
+
+    @media (max-width: 500px) {
+      .success-container {
+        margin: 30px 15px;
+        padding: 25px;
+      }
+
+      .buttons a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="success-container">
+  <div class="checkmark">✅</div>
+  <h2>Order Confirmed!</h2>
+  <p class="info">Thank you, <strong>{{ name }}</strong>! 🎉</p>
+  <p class="info"><strong>Order ID:</strong> #{{ order.id }}</p>
+  <p class="info"><strong>Item:</strong> {{ product.pizza_name }}</p>
+  <p class="info"><strong>Total:</strong> ₹{{ total_price }}</p>
+  <p class="info"><strong>Delivery in:</strong> 30–40 mins</p>
+
+  <p class="note">We’re preparing your food! You’ll get a notification once it’s out for delivery. 🍽️</p>
+
+  <div class="buttons">
+    <a href="{% url 'home' %}">← Go to Home</a>
+    <a href="#">📦 Track Order</a>
+    <a href="#">📜 Order History</a>
+  </div>
+</div>
+
+</body>
+</html>

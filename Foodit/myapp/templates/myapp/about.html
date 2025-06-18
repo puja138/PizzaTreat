@@ -1,0 +1,106 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block hero_section %}
+<div class="hero-content">
+  <h1 class="hero-heading">About Us</h1>
+  <p class="hero-subtext">
+    Discover the passion behind every slice. Fresh ingredients. Authentic taste. Made with love.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nostrum rem! Voluptas quam 
+    illum in nam id voluptates, sint porro, deleniti animi, veniam earum modi aperiam eos sit
+    quidem autem magni tempora harum totam?
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- 🔸 Our Story Section -->
+<section class="our-story-section">
+  <div class="story-text-box">
+    <h2 class="story-heading">Our Story</h2>
+    <p class="story-paragraph">
+      From humble beginnings in a small kitchen, our journey began with a dream to serve real, delicious Italian pizza.
+      Over the years, we’ve mastered the craft of traditional dough kneading, slow-simmered sauces, and wood-fired baking.
+      Every recipe we create is filled with love, inspired by age-old techniques and modern flavors.
+      <br><br>
+      Our team of chefs put their hearts into each pizza, ensuring quality and taste in every bite.
+      We are committed to sourcing only the freshest ingredients — from garden-fresh veggies to premium cheeses.
+      <br><br>
+      Community is the heart of our mission. Whether it’s hosting pizza nights or donating to local causes,
+      we’re proud to give back. Pizza is not just food here — it's a way to bring people together.
+    </p>
+  </div>
+
+  <div style="flex: 1; padding: 20px;">
+    <img src="{% static 'myapp/images/pexels-cottonbro-6954047.jpg' %}" alt="Our Story" style="width: 100%; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+  </div>
+</section>
+
+<!-- 🔸 Our Roots Section (Image Left) -->
+<section class="our-story-section reverse-layout">
+  <div class="story-image-box">
+    <img src="{% static 'myapp/images/pexels-wewe-yang-2383099-5116976.jpg' %}" alt="Our Roots">
+  </div>
+  <div class="story-text-box">
+    <h2 class="story-heading">Our Roots</h2>
+    <p class="story-paragraph">
+      Our story began in a cozy kitchen in 2015 with a vision to share authentic Italian flavors.
+      From experimenting with traditional dough to crafting our signature sauces, every step was filled with passion.
+      <br><br>
+      What started as a family dream soon became the neighborhood's go-to pizza place. We stayed committed to our values —
+      hand-tossed crusts, wood-fired baking, and premium, local ingredients.
+      <br><br>
+      Over the years, our menu expanded, our team grew, and so did the love from our community.
+      Today, we stand proud of our roots and the journey that brought us here — delivering joy one slice at a time.
+    </p>
+  </div>
+</section>
+
+<section class="info-combo-section">
+  <!-- Left Side: Image -->
+  <div class="info-image-container">
+    <img src="{% static 'myapp/images/pexels-katerina-holmes-5907845.jpg' %}" alt="Pizza Image">
+  </div>
+
+  <!-- Right Side: All 3 text boxes stacked -->
+  <div class="info-text-container">
+    <!-- Top Box -->
+    <div class="info-box top-box">
+      <h2>Fresh Ingredients</h2>
+      <p>We use only the freshest ingredients to make every bite delicious.
+      Every pizza is hand-prepared by expert chefs who care deeply about flavor, texture, and presentation.
+      Every pizza is hand-prepared by expert chefs who care deeply about flavor, texture, and presentation.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veritatis voluptate architecto minima, 
+      laborum voluptatibus natus molestiae pariatur exercitationem!
+
+
+      </p>
+    </div>
+
+    <!-- Middle Box -->
+    <div class="info-box middle-box">
+      <h2>Crafted with Love</h2>
+      <p>Our chefs handcraft each pizza with passion and love.
+      Every pizza is hand-prepared by expert chefs who care deeply about flavor, texture, and presentation.
+      Every pizza is hand-prepared by expert chefs who care deeply about flavor, texture, and presentation.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veritatis voluptate architecto minima, 
+      laborum voluptatibus natus molestiae pariatur exercitationem!
+
+
+      </p>
+    </div>
+
+    <!-- Bottom Box -->
+    <div class="info-box bottom-box">
+      <h2>Community Focused</h2>
+      <p>We’re more than a shop — we’re your neighbor, giving back every day.
+      Every pizza is hand-prepared by expert chefs who care deeply about flavor, texture, and presentation.
+      Every pizza is hand-prepared by expert chefs who care deeply about flavor, texture, and presentation.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veritatis voluptate architecto minima, 
+      laborum voluptatibus natus molestiae pariatur exercitationem!
+      </p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

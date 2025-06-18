@@ -1,0 +1,92 @@
+/* login.html */
+/* Background Image & Overlay */
+/* Full image background with black overlay */
+.login-hero {
+  background-image: url('/static/myapp/images/pexels-catscoming-835741.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 85vh; /* reduced height */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-overlay {
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  width:300%;
+  max-width: 500px;
+}
+
+/* Content on top of image */
+.login-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Heading and subtext */
+.login-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px #000;
+} 
+
+.login-subtext {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+/* 🔄 Remove dark background from form-wrapper and increase width */
+.login-form-wrapper {
+  background-color: transparent; /* removed extra black */
+  padding: 0;                     /* remove inner space */
+  border-radius: 0;               /* remove rounding if not needed */
+  box-shadow: none;              /* remove shadow */
+  width: 100%;                   /* expand width to match container */
+  max-width: 500px;              /* adjust max width as needed */
+  margin-top: 20px;
+}
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* ✅ Input spacing and layout */
+.login-form-wrapper input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+/* ✅ Button styling */
+.login-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #cc0000;
+}
