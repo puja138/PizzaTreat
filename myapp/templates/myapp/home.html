@@ -1,0 +1,67 @@
+
+<!-- templates/home.html -->
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    {% for pizza in pizzas %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.pizza_name }}"
+          style="height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ pizza.pizza_name }}</h5>
+          <p class="card-text">Price: ₹{{ pizza.price }}</p>
+          <a href="#" class="btn btn-primary mt-auto">Order Now</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<section class="card-section">
+  <div class="card">
+    <img src="{% static 'myapp/images/pexels-nadin-sh-78971847-15795817.jpg' %}" alt="Margherita Pizza">
+    <h3>Margherita</h3>
+    <p>Classic cheese pizza with fresh basil.</p>
+    <a href="#" class="btn btn-warning mt-auto"> View Menu</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'myapp/images/pexels-jonathanborba-2983103.jpg' %}" alt="Pepperoni Pizza">
+    <h3>Pepperoni</h3>
+    <p>Spicy pepperoni with mozzarella and sauce.</p>
+    <a href="#" class="btn btn-warning mt-auto"> View Menu</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'myapp/images/amirali-mirhashemian-sc5sTPMrVfk-unsplash.jpg' %}" alt="Veggie Pizza">
+    <h3>Veggie Delight</h3>
+    <p>Loaded with farm-fresh veggies.</p>
+    <a href="#" class="btn btn-warning mt-auto"> View Menu</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'myapp/images/chad-montano-MqT0asuoIcU-unsplash (1).jpg' %}" alt="Cheese Burst Pizza">
+    <h3>Cheese Burst</h3>
+    <p>Overflowing cheese in every bite.</p>
+    <a href="#" class="btn btn-warning mt-auto"> View Menu</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'myapp/images/pexels-valeriya-1893556.jpg' %}" alt="Pepperoni Pizza">
+    <h3>Pepperoni</h3>
+    <p>Spicy pepperoni with mozzarella and sauce.</p>
+    <a href="#" class="btn btn-warning mt-auto"> View Menu</a>
+  </div>
+  <div class="card">
+    <img src="{% static 'myapp/images/amirali-mirhashemian-sc5sTPMrVfk-unsplash.jpg' %}" alt="Pepperoni Pizza">
+    <h3>Pepperoni</h3>
+    <p>Spicy pepperoni with mozzarella and sauce.</p>
+    <a href="#" class="btn btn-warning mt-auto"> View Menu</a>
+  </div>
+</section>
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Place Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .order-card {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: #ff4d4d;
+    }
+
+    .form-control, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .btn-order {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-order:hover {
+      background-color: #e60000;
+    }
+
+    .product-summary {
+      background-color: #f8f8f8;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-summary img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-summary .details {
+      flex-grow: 1;
+    }
+
+    .payment-options {
+      background-color: #f1f9ff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border: 1px solid #cce7ff;
+    }
+
+    .payment-options label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .payment-options input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .pay-button {
+      background-color: #00b9f1;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .pay-button:hover {
+      background-color: #008fc3;
+    }
+  </style>
+</head>
+<body>
+  <div class="order-card">
+    <h2>Place Your Order</h2>
+
+    <div class="product-summary">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      {% endif %}
+      <div class="details">
+        <h5>{{ product.name }}</h5>
+        <p>₹{{ product.price }}</p>
+      </div>
+    </div>
+
+    <!-- 💳 Pay Now Button -->
+    <button class="pay-button" onclick="alert('This is a demo Pay Now button')">
+      Pay Now
+    </button>
+
+    <!-- 💰 Payment Options -->
+    <div class="payment-options">
+      <label><input type="radio" name="payment_method" value="cod" checked> Cash on Delivery</label>
+      <label><input type="radio" name="payment_method" value="upi"> UPI</label>
+      <label><input type="radio" name="payment_method" value="card"> Credit/Debit Card</label>
+    </div>
+
+    <!-- 🧾 Order Form -->
+    <form method="POST" action="{% url 'place_order' %}">
+      {% csrf_token %}
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+
+      <label for="name">Full Name</label>
+      <input type="text" class="form-control" name="name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" class="form-control" name="phone" required>
+
+      <label for="address">Delivery Address</label>
+      <textarea class="form-control" name="address" rows="3" required></textarea>
+
+      <label for="quantity">Quantity</label>
+      <input type="number" class="form-control" name="quantity" min="1" value="1" required>
+
+      <button type="submit" class="btn-order">Place Order</button>
+    </form>
+  </div>
+</body>
+</html>

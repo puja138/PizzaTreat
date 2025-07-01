@@ -1,0 +1,76 @@
+<!-- templates/myapp/book_table.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book a Table</title>
+  <style>
+    body { font-family: Arial; background: #f5f5f5; margin: 0; padding: 0; }
+    .booking-container { max-width: 650px; margin: 50px auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #ff4d4d; margin-bottom: 30px; font-weight: bold; text-shadow: 1px 1px 2px #aaa; }
+    .form-control, .form-select { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc; font-size: 15px; }
+    button { width: 100%; padding: 12px; background-color: #ff4d4d; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background-color: #e60000; }
+    .success-msg { background-color: #d4edda; color: #155724; padding: 12px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #c3e6cb; }
+  </style>
+  <script>
+    function showPaymentOptions() {
+      document.getElementById('pay-now-section').style.display = 'block';
+      document.getElementById('submit-btn').style.display = 'block';
+      document.getElementById('pay-btn').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+  <div class="booking-container">
+    <h2>Book a Table</h2>
+
+    {% if messages %}
+      <div class="success-msg">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+      <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+      <input type="email" name="email" class="form-control" placeholder="Email Address">
+      <select name="occasion" class="form-select">
+        <option value="">Select Occasion</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Anniversary">Anniversary</option>
+        <option value="Casual Dining">Casual Dining</option>
+        <option value="Business Meeting">Business Meeting</option>
+      </select>
+      <input type="date" name="date" class="form-control" required>
+      <input type="time" name="time" class="form-control" required>
+      <input type="number" name="guests" class="form-control" placeholder="Number of Guests" required>
+      <select name="table_preference" class="form-select">
+        <option value="">Table Preference</option>
+        <option value="Indoor">Indoor</option>
+        <option value="Outdoor">Outdoor</option>
+        <option value="Window Side">Window Side</option>
+      </select>
+      <textarea name="message" rows="3" class="form-control" placeholder="Special Requests (e.g. Cake, Decorations)"></textarea>
+
+      <button type="button" id="pay-btn" onclick="showPaymentOptions()">Pay Now</button>
+
+      <div id="pay-now-section" style="display:none;">
+        <label>Select Payment Method:</label>
+        <select name="payment_method" class="form-select" required>
+          <option value="">-- Choose Payment Option --</option>
+          <option value="UPI">UPI</option>
+          <option value="Card">Card</option>
+          <option value="Cash on Arrival">Cash on Arrival</option>
+        </select>
+      </div>
+
+      <button type="submit" id="submit-btn" style="display:none; margin-top: 15px;">Confirm Booking</button>
+    </form>
+  </div>
+</body>
+</html>
