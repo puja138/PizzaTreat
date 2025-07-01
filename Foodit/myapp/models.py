@@ -51,7 +51,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.customer_name} - {self.product.pizza_name}"
+        return f"{self.customer_name} - {self.product.name}"
 
 class TableBooking(models.Model):
     name = models.CharField(max_length=100)
@@ -69,3 +69,12 @@ class TableBooking(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.date} {self.time}"
+
+
+# ✅ ADD THIS: Customer Model
+class Customer(BaseModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone = models.CharField(max_length=20, blank=True)
+    address = models.TextField(blank=True)
+    def __str__(self):
+        return self.user.username

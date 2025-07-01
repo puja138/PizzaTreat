@@ -7,7 +7,7 @@ from .forms import MobileLoginForm
 from .models import Product, Order  # Order model ko create karna hoga
 from django.contrib import messages
 from datetime import timedelta, date
-from .models import TableBooking
+
 
 # ✅ HOME VIEW
 def home_view(request):
@@ -181,3 +181,4 @@ def book_table_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
