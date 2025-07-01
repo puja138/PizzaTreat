@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -21,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p=d6th2dsah0gizk&r@xa=hgss#9e@p*z48t*@f%w9nc#a7pqz'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure...apki-key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -63,9 +65,11 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static', 
             ],
         },
     },
@@ -120,8 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'myapp/static'),
+    BASE_DIR / 'myapp' / 'static',
 ]
 
 LOGIN_URL = '/login/'
@@ -129,10 +134,10 @@ LOGIN_REDIRECT_URL = '/'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Ye jaruri hai
+STATIC_ROOT = BASE_DIR / 'staticfiles' # Ye jaruri hai
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

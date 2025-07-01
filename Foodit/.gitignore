@@ -7,7 +7,7 @@ __pycache__/
 # Django
 db.sqlite3
 /media/
-staticfiles/
+/staticfiles/
 
 # Environments
 .env
@@ -18,3 +18,8 @@ staticfiles/
 # OS files
 .DS_Store
 Thumbs.db
+
+
+# Virtual env
+venv/
+env/
